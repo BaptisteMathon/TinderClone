@@ -1,12 +1,12 @@
 # Tinder Clone
 
-Tinder Clone est une application mobile développé avec React Native et Expo, permettant aux utilisateurs de swiper à gaucheou à droite sur des profils. 
+Tinder Clone est une copie de Tinder ainsi qu'une application mobile développé avec React Native et Expo, permettant aux utilisateurs de swiper à gaucheou à droite sur des profils. 
 
 
 ## Fonctionnalité
 - / (Accueil): Ecran principal permettant de swiper les profils
 - /matchs (Matchs): Liste des profils matchés
-- .profil (Profile): Informations de notre profil
+- /profil (Profile): Informations de notre profil
 
 Connexion obligatoire pour acceder à l'appli
 
