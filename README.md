@@ -10,6 +10,11 @@ Tinder Clone est une copie de Tinder ainsi qu'une application mobile développé
 
 Connexion obligatoire pour acceder à l'appli
 
+Pour se connecter entrer les identifiants suivants:
+
+**Email :** test@gmail.com
+**Password :** azerty123456
+
 ## Comment lancer le projet
 
 pour lancer le projet il faut suivre les commandes suivantes:

@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-import axios from 'axios';
-import {useQuery} from '@tanstack/react-query'
-import { withDecay } from 'react-native-reanimated';
+import { getProfiles } from '@/hooks/getProfiles';
 
 
 export default function HomeScreen() {
@@ -39,20 +37,24 @@ export default function HomeScreen() {
   //   }
   // ]
 
-  const fetchProfiles = async () => {
-    const {data} = await axios.get('https://api-tinder-next.vercel.app/api/profiles');
-    return data
-  }
+  // const fetchProfiles = async () => {
+  //   const {data} = await axios.get('https://api-tinder-next.vercel.app/api/profiles');
+  //   return data
+  // }
 
-  const {data: profiles, isLoading, error} = useQuery({
-    queryKey: ['profiles'],
-    queryFn: fetchProfiles
-  })
+  // const {data: profiles, isLoading, error} = useQuery({
+  //   queryKey: ['profiles'],
+  //   queryFn: fetchProfiles
+  // })
+
+  const {data: profiles, isLoading, error} = getProfiles();
+  console.log(profiles)
 
   if(isLoading) return <View style={styles.image2}>
     <Image source={require('@/assets/images/Tinder.png')} style={{width: 72, height: 84}}/>
   </View>
   if(error)return <Text>Erreur: {error.message}</Text>
+ 
 
   return (
     <View style={styles.main}>
@@ -71,6 +73,45 @@ export default function HomeScreen() {
         onSwipedRight={() => console.log('Accepté')}
         stackSize={2}
         backgroundColor="transparent"
+        overlayLabels={{
+          left: {
+            title: "❌",
+            style: {
+              label: {
+                backgroundColor: '#ff0000',
+                fontSize: 50,
+                borderRadius: 10,
+                padding: 20,
+                textAlign: 'right',
+                color: 'white',
+              },
+              wrapper: {
+                position: 'absolute',
+                top: '50%',
+                right: '35%',
+                transform: [{translateY: -25}],
+              }
+            }
+          },
+          right: {
+            title: "❤️",
+            style: {
+              label: {
+                backgroundColor: "#00ff00",
+                fontSize: 50,
+                borderRadius: 10,
+                padding: 20,
+                color: 'white',
+              },
+              wrapper: {
+                position: 'absolute',
+                top: '50%',
+                left: '35%',
+                transform: [{translateY: -25}],
+              }
+            }
+          }
+        }}
       />
     </View>
   );
@@ -82,14 +123,16 @@ const styles = StyleSheet.create({
     flex : 1,
     justifyContent: 'center',
     alignItems: 'center',
-    userSelect: 'none'
+    userSelect: 'none',
+    backgroundColor: '#f9f9f9',    
+
   },
-  card: {
-    backgroundColor: 'white', 
+  card: {    
     borderRadius: 10, 
-    // padding: 20, 
+    margin: '20%', 
     alignItems: 'center',
-    userSelect: 'none'
+    userSelect: 'none',
+    backgroundColor: '#f9f9f9',  
   },
   image: {
     width: 320, 

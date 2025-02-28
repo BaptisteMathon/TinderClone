@@ -13,7 +13,7 @@ import useUserStore from '@/store/user.store';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
-  const {isAuthentificated}: any = useUserStore();
+  const {isAuthentificated} = useUserStore();
   // const checkIfUserIsAlreadyAuthentificated = await getValueFor("isAuthentificated")
   const router = useRouter();
   const navigationRootState = useRootNavigationState();

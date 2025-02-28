@@ -6,14 +6,15 @@ import useUserStore from '@/store/user.store';
 
 export default function LoginScreen() {
     const router = useRouter();
-    const {setIsAuthentificated}: any = useUserStore()
+    const {setIsAuthentificated, setUser} = useUserStore()
 
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(false)
 
     const handleLogin = async () => {       
-        if(name && password){            
+        // if(email && password){  
+        if(email  === "test@gmail.com" && password === "azerty123456"){            
             setIsAuthentificated(true);
             // await save('isAuthentificated', 'true');
             router.replace("/(private)/(tabs)");            
@@ -28,13 +29,13 @@ export default function LoginScreen() {
 
       <Image source={require('@/assets/images/Tinder.png')} style={styles.logo}/>      
 
-      {error && <Text style={styles.error}>Veuillez renseigner tous les champs</Text>}
+      {error && <Text style={styles.error}>Email ou mot de passe incorrect !</Text>}
 
       <TextInput
         style={styles.input}
         placeholder='Name'
-        value={name}
-        onChangeText={setName}
+        value={email}
+        onChangeText={setEmail}
         autoCapitalize='none'
       />
 
