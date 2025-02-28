@@ -25,3 +25,6 @@ cd TinderClone
 npm install expo-router nativewind react-native-deck-swiper zustand @tanstack/react-query expo-secure-store axios
 npx expo start
 ```
+
+La version web est disponible à l'adresse suivante: http://localhost:8081
+Ou en scannant le QR code suivant: ![plot](./assets/images/QRcode.png)
